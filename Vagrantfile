@@ -28,7 +28,8 @@ We will automatically launch a 3 node iosv topology for you to interact with
 simply cut and paste the above string into a browser.
 Link to the accompanying lab is at
 http://web.virl.info/nothing_to_see_here_yet.html"
-#This doesnt work yet with appcatalyst..
+
+#These doesnt work yet with appcatalyst..
 
 config.vm.network "forwarded_port", guest: 19399, host: 20399
 config.vm.network "forwarded_port", guest: 19400, host: 20400
@@ -44,6 +45,8 @@ config.vm.network "forwarded_port", guest: 19401, host: 20401
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
+
+# Pick a local directory that works for you to store router vms across boxes
 config.vm.synced_folder "/Volumes/Data/images/salt", "/var/local/salt/", create: true
 
 config.vm.provider "vmware_appcatalyst" do |v, override|
