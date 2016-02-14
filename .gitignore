@@ -1,6 +1,8 @@
 # Cache objects
 packer_cache/
-
+salt/minion.pem
+salt/minion.pem
 # For built boxes
 *.box
 .vagrant*
+*~
