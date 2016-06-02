@@ -61,24 +61,24 @@ config.vm.network "private_network", ip: "172.16.10.0", auto_config: false
 
 $virlscript = <<SCRIPT
 # You should place a virl.ini file in the same directory with your Vagrantfile
-cp -f /vagrant/virl.ini /etc/virl.ini
+sudo cp -f /vagrant/virl.ini /etc/virl.ini
 
 if [ -d  /var/cache/salt/minion/files/base/images/salt ]; then
-  rm -rf /var/cache/salt/minion/files/base/images/salt
+  sudo rm -rf /var/cache/salt/minion/files/base/images/salt
 fi
 if [ ! -d  /var/cache/salt/minion/files/base/images ]; then
-  mkdir -p /var/cache/salt/minion/files/base/images
+  sudo mkdir -p /var/cache/salt/minion/files/base/images
 fi
 
 #Link to local copy of images
-ln -s /var/local/salt /var/cache/salt/minion/files/base/images
+sudo ln -s /var/local/salt /var/cache/salt/minion/files/base/images
 
 #If your going to point/test externally you should just keep your keys here in your launch dir as well
-cp -f /vagrant/*.pem /etc/salt/pki/minion
-openssl rsa -in /vagrant/salt/minion.pem -outform PEM -pubout > /etc/salt/pki/minion/minion.pub
+sudo cp -f /vagrant/salt/*.pem /etc/salt/pki/minion/minion.pem
+sudo sh -c 'openssl rsa -in /vagrant/salt/minion.pem -outform PEM -pubout > /etc/salt/pki/minion/minion.pub'
 
 # set grains from your replacement ini file
-/usr/local/bin/vinstall salt
+sudo /usr/local/bin/vinstall salt
 
 echo 'Short pause for salt to recover'
 sleep 5
