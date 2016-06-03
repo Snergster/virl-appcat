@@ -1,7 +1,8 @@
 # Cache objects
 packer_cache/
 salt/minion.pem
-salt/minion.pem
+images/*
+!images/README
 # For built boxes
 *.box
 .vagrant*
